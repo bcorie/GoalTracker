@@ -3,105 +3,90 @@ const {createRoot} = require('react-dom/client');
 const helper = require('./helper');
 const { useState, useEffect } = React;
 
-const handleDomo = (e, onDomoAdded) => {
+const handleGoal = (e, onGoalAdded) => {
   e.preventDefault();
   helper.hideError();
 
-  const name = e.target.querySelector('#domoName').value;
-  const age = e.target.querySelector('#domoAge').value;
-  const height = e.target.querySelector('#domoHeight').value;
+  const title = e.target.querySelector('#goalTitle').value;
+  const description = e.target.querySelector('#goalDescription').value;
+  const endDate = e.target.querySelector('#goalEndDate').value;
 
-  if (!name || !age || !height) {
+  if (!title || !description || !endDate) {
     helper.handleError('All fields are required!');
     return false;
   }
 
-  helper.sendPost(e.target.action, { name, age, height }, onDomoAdded);
+  helper.sendPost(e.target.action, { title, description, endDate }, onGoalAdded);
   return false;
 };
 
-const DomoForm = (props) => {
+const GoalForm = (props) => {
   return (
-    <form id='domoForm'
-      name='domoForm'
-      onSubmit={(e) => handleDomo(e, props.triggerReload)}
+    <form id='goalForm'
+      name='goalForm'
+      onSubmit={(e) => handleGoal(e, props.triggerReload)}
       action='/maker'
       method='POST'
-      className='domoForm'
+      className='goalForm'
     >
-      <label htmlFor='name'>Name: </label>
-      <input id='domoName' type='text' name='name' placeholder='Domo name' />
-      <label htmlFor='age'>Age: </label>
-      <input id='domoAge' type='number' min='0' name='age' />
-      <label htmlFor='height'>Height: </label>
-      <input id='domoHeight' type='number' min='0' name='height' />
-      <input className='makeDomoSubmit' type='submit' value='Make Domo' />
+      <label htmlFor='title'>Title: </label>
+      <input id='goalTitle' type='text' name='title' placeholder='Goal title' />
+      <label htmlFor='description'>Description: </label>
+      <input id='goalDescription' type='text' name='description' placeholder='Description'/>
+      <label htmlFor='endDate'>End Date: </label>
+      <input id='goalEndDate' type='date' min={Date.now()} name='endDate' />
+      <input className='makeGoalSubmit' type='submit' value='Make Goal' />
     </form>
   );
 };
 
-const DomoList = (props) => {
-  const [domos, setDomos] = useState(props.domos);
+const GoalList = (props) => {
+  const [goals, setGoals] = useState(props.goals);
 
   useEffect (() => {
-    const loadDomosFromServer = async () => {
-      const response = await fetch('/getDomos');
+    const loadGoalsFromServer = async () => {
+      const response = await fetch('/getGoals');
       const data = await response.json();
-      setDomos (data.domos);
+      setGoals (data.goals);
     };
-    loadDomosFromServer();
-  }, [props.reloadDomos]);
+    loadGoalsFromServer();
+  }, [props.reloadGoals]);
 
-  if (domos.length === 0) {
+  if (goals.length === 0) {
     return (
-      <div className="domoList">
-        <h3 className="emptyDomo">No Domos Yet!</h3>
+      <div className="goalList">
+        <h3 className="emptyGoal">No Goals Yet!</h3>
       </div>
     );
   }
 
-  const domoNodes = domos.map(domo => {
+  const goalNodes = goals.map(goal => {
     return (
-      <div key={domo.id} className="domo">
+      <div key={goal.id} className="goal">
         <img src="/assets/img/domoface.jpeg" alt="domo face" className="domoFace" />
-        <h3 className="domoName">Name: {domo.name}</h3>
-        <h3 className="domoAge">Age: {domo.age}</h3>
-        <h3 className="domoHeight">Height: {domo.height} units</h3>
+        <h3 className="goalTitle">Title: {goal.title}</h3>
+        <h3 className="goalDescription">Description: {goal.description}</h3>
+        <h3 className="goalEndDate">End Date: {goal.endDate}</h3>
       </div>
     );
-
-    //// Intended page change: ////
-    // return (
-    //   <div key={domo.id} className="domo">
-    //     <h3 className="domoName">{domo.name}</h3>
-    //     <img
-    //       src="/assets/img/domo.png"
-    //       alt="domo"
-    //       className="domo"
-    //       style={{
-    //         height: `${domo.height * 100}px`,
-    //         width: `${domo.width * 100}px`,
-    //       }}/>
-    //   </div>
-    // );
   });
 
   return (
-    <div className="domoListViewer">
-      {domoNodes}
+    <div className="goalListViewer">
+      {goalNodes}
     </div>
   );
 };
 
 const App = () => {
-  const [reloadDomos, setReloadDomos] = useState (false);
+  const [reloadGoals, setReloadGoals] = useState (false);
   return (
     <div>
-      <div id="makeDomo">
-        <DomoForm triggerReload={() => setReloadDomos(!reloadDomos)} />
+      <div id="makeGoal">
+        <GoalForm triggerReload={() => setReloadGoals(!reloadGoals)} />
       </div>
-      <div id="domos">
-        <DomoList domos={[]} reloadDomos={reloadDomos} />
+      <div id="goals">
+        <GoalList goals={[]} reloadGoals={reloadGoals} />
       </div>
     </div>
   );
