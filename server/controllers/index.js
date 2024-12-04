@@ -1,2 +1,2 @@
 module.exports.Account = require('./Account');
-module.exports.Domo = require('./Domo');
+module.exports.Goal = require('./Goal');

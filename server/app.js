@@ -3,7 +3,7 @@ const path = require('path');
 const express = require('express');
 const compression = require('compression');
 const favicon = require('serve-favicon');
-const bodyParser = require('body-parser'); // TODO: remove
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const expressHandlebars = require('express-handlebars');
 const helmet = require('helmet');
@@ -15,7 +15,7 @@ const router = require('./router');
 
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
-const dbURI = process.env.MONGODB_URI || 'mongodb+srv://dbAdmin:cfb3749Password@richmedia.1a1ll.mongodb.net/DomoMaker?retryWrites=true&w=majority';
+const dbURI = process.env.MONGODB_URI || 'mongodb+srv://dbAdmin:cfb3749Password@richmedia.1a1ll.mongodb.net/GoalTracker?retryWrites=true&w=majority';
 
 mongoose.connect(dbURI).catch((err) => {
   if (err) {
@@ -37,15 +37,15 @@ redisClient.connect().then(() => {
   app.use('/assets', express.static(path.resolve(`${__dirname}/../hosted/`)));
   app.use(favicon(`${__dirname}/../hosted/img/favicon.png`));
   app.use(compression());
-  app.use(bodyParser.urlencoded({ extended: true }));// TODO: remove
-  app.use(bodyParser.json());// TODO: remove
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
 
   app.use(session({
     key: 'sessionid',
     store: new RedisStore({
       client: redisClient,
     }),
-    secret: 'Domo Arigato',
+    secret: 'Goal appetizer',
     resave: false,
     saveUninitialized: false,
   }));
