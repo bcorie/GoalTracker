@@ -52,7 +52,8 @@ const GoalList = (props) => {
     loadGoalsFromServer();
   }, [props.reloadGoals]);
 
-  if (goals.length === 0) {
+  // console.log(goals);
+  if (!goals || goals.length === 0) {
     return (
       <div className="goalList">
         <h3 className="emptyGoal">No Goals Yet!</h3>
