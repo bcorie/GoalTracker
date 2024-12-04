@@ -19,7 +19,11 @@ const makeGoal = async (req, res) => {
   try {
     const newGoal = new Goal(GoalData);
     await newGoal.save();
-    return res.status(201).json({ title: newGoal.title, description: newGoal.description, endDate: newGoal.endDate });
+    return res.status(201).json({
+      title: newGoal.title,
+      description: newGoal.description,
+      endDate: newGoal.endDate,
+    });
   } catch (err) {
     console.log(err);
     if (err.code === 11000) {
@@ -57,5 +61,5 @@ module.exports = {
   makerPage,
   makeGoal,
   getGoals,
-  viewPage,
+  // viewPage,
 };
