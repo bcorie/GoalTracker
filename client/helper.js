@@ -3,6 +3,7 @@
   end in an error.
 */
 const handleError = (message) => {
+  //TODO: update for new error message UI
   document.querySelector('#errorMessage').textContent = message;
   document.querySelector('#domoMessage').classList.remove('hidden');
 };
@@ -19,6 +20,7 @@ const sendPost = async (url, data, handler) => {
     body: JSON.stringify(data),
   });
 
+  //TODO: update for new error message UI
   const result = await response.json();
   document.querySelector('#domoMessage').classList.add('hidden');
 
@@ -36,6 +38,7 @@ const sendPost = async (url, data, handler) => {
 };
 
 const hideError = () => {
+  //TODO: update for new error message UI
   document.querySelector('#domoMessage').classList.add('hidden');
 };
 
