@@ -10,11 +10,13 @@ const makeGoal = async (req, res) => {
   }
 
   const GoalData = {
-    title: req.body.name,
-    description: req.body.age,
+    title: req.body.title,
+    description: req.body.description,
     endDate: req.body.endDate,
     owner: req.session.account._id,
   };
+
+  // console.log(`${req.body.name}, ${description}, ${endDate}`);
 
   try {
     const newGoal = new Goal(GoalData);
