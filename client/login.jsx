@@ -49,11 +49,11 @@ const LoginWindow = (props) => {
       method='POST'
       className='mainForm'
     >
-      <label htmlFor='username'>Username: </label>
-      <input id='user' type='text' name='username' placeholder='username' />
-      <label htmlFor='pass'>Password: </label>
-      <input id='pass' type='password' name='pass' placeholder='password' />
-      <input className='formSubmit' type='submit' value='Sign in' />
+      <h1 class="display-font">Goal Tracker</h1>
+      <h2 class="header-font-italic">Welcome back!</h2>
+      <input id='user' type='text' class="text-font"name='username' placeholder='Username' />
+      <input id='pass' type='password' class="text-font"name='pass' placeholder='Password' />
+      <input className='formSubmit' class="text-font" type='submit' value='Log in' />
     </form>
   )
 };
@@ -67,13 +67,10 @@ const SignupWindow = (props) => {
       method='POST'
       className='mainForm'
     >
-      <label htmlFor='username'>Username: </label>
-      <input id='user' type='text' name='username' placeholder='username' />
-      <label htmlFor='pass'>Password: </label>
-      <input id='pass' type='password' name='pass' placeholder='password' />
-      <label htmlFor='pass'>Password: </label>
-      <input id='pass2' type='password' name='pass2' placeholder='retype password' />
-      <input className='formSubmit' type='submit' value='Sign in' />
+      <input id='user' type='text' class="text-font" name='username' placeholder='Username' />
+      <input id='pass' type='password' class="text-font" name='pass' placeholder='Password' />
+      <input id='pass2' type='password' class="text-font" name='pass2' placeholder='Confirm password' />
+      <input className='formSubmit' class="text-font" type='submit' value='Sign in' />
     </form>
   )
 };

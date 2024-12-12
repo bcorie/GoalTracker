@@ -1,23 +1,65 @@
+/* pallet: https://coolors.co/7360d4-8bb67b-ffc857-db4545-352d39-ededed */
+
+/* Imported font classes */
+/* <uniquifier>: Use a unique and descriptive class name
+   <weight>: Use a value from 200 to 1000 */
+
+.text-font {
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
+}
+.header-font-regular {
+    font-family: "PT Serif Caption", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.header-font-italic {
+    font-family: "PT Serif Caption", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+  
+.display-font {
+    font-family: "Permanent Marker", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 html, body {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    background-color: rgb(69, 64, 72);
+}
+
+h1 {
+    color: #ededed;
+}
+
+h2 {
+    color: #ededed;
 }
 
 #logo {
-    height: 40px;
-    width: 40;
-    padding-top: 5px;
-    float:left;
-    border-radius: 8px;
+    text-decoration: none;
+    float: left;
+    margin-left: 10px;
 }
 
 nav {
+    display: flex;
     width: 100%;
     height: 50px;
-    background-color: #55acee;
+    background-color: rgb(115, 96, 212);
+    align-items: center;
 }
 
 nav:nth-child(1) {
@@ -26,25 +68,24 @@ nav:nth-child(1) {
 
 .navlink {
     padding: 5px;
-    padding-top: 12px;
     padding-left: 20px;
-    color: white;
+    color: #ededed;
     font-size: 1.3em;
     float: left;
 }
 
 .navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active {
-    color: white;
+    color: rgb(115, 96, 212);
     text-decoration: none;
     padding: 5px;
-    border-radius: 4px;
-    background-color: #55acee;
+    border-radius: 5px;
+    background-color: #ededed;
     transition: background-color 0.4s ease;
 }
 
 .navlink a:hover {
     transition: background-color 0.8s ease;
-    background-color: #66bdff;
+    background-color: #b3b3b3;
 }
 
 .domoForm {
@@ -77,12 +118,12 @@ nav:nth-child(1) {
     width: 90px;
     background-color: #55acee;
     border-radius: 2px;
-    color: white;
+    color: #ededed;
     text-decoration: none;
 }
 
 .makeDomoSubmit:link, .makeDomoSubmit:visited, .makeDomoSubmit:hover, .makeDomoSubmit:active {
-    color: white;
+    color: #ededed;
 }
 
 .makeDomoSubmit:hover {
@@ -91,21 +132,44 @@ nav:nth-child(1) {
 }
 
 .mainForm {
-    height: 300px;
+    position: absolute;
+    height: 350px;
     width: 350px;
-    margin: 0 auto;
-    padding-top: 350px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding-top: 50px;
     font-size: 1.2em;
+    background-color: rgb(115, 96, 212);
 }
 
-.mainForm h3 {
+.mainForm {
     text-align: center;
+}
+
+.mainForm h1 {
+    font-size: 200%;
+}
+
+.mainForm input[type="text"], input[type="password"] {
+    background-color: #ededed;
+    caret-color: rgb(69, 64, 72);
+    color: rgb(69, 64, 72);
+    border-color: rgb(69, 64, 72);
+    border-radius: 10px;
+    border-width: 4px;
+    font-size: 1em;
+    width: 180px;
+    padding-left: 0.5em;
+    margin: 5px;
 }
 
 .mainForm label {
     display: inline-block;
     width: 100px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     text-align: right;
     font-size: 1.2em;
 }
@@ -118,33 +182,33 @@ nav:nth-child(1) {
     margin-top: 14px;
     font-size: 1.2em;
     width: 100px;
-    background-color: #55acee;
-    border-radius: 2px;
-    border-color: #66acee;
+    background-color: #ededed;
+    border-radius: 5px;
+    border-color: rgb(115, 96, 212);
     padding: 3px 0px;
-    color: white;
+    color: rgb(115, 96, 212);
     text-decoration: none;
 }
 
 .formSubmit:link, .formSubmit:visited, .formSubmit:hover, .formSubmit:active {
-    color: white;
+    color: #b3b3b3;
 }
 
 .formSubmit:hover {
     transition: background-color 0.4s ease;
-    background-color: #338acc;
+    background-color: #b3b3b3;
 }
 
-#user, #pass, #pass2 {
+/* #user, #pass, #pass2 {
     text-align: center;
     font-size: 1.1em;
     width: 180px;
     border-radius: 6px;
-}
+} */
 
 #user:focus, #pass:focus, #pass2:focus {
     outline: none;
-    box-shadow: 0px 0px 1px 1px #55acee;
+    box-shadow: 0px 0px 1px 1px rgb(255, 200, 87);
 }
 
 .hidden {
