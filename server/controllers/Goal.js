@@ -39,7 +39,8 @@ const getGoals = async (req, res) => {
   try {
     const query = { owner: req.session.account._id };
     const docs = await Goal.find(query).select('title description endDate').lean().exec();
-    return res.json({ Goals: docs });
+    console.log(docs);
+    return res.json({ goals: docs });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ error: 'Error retrieving goals!' });
