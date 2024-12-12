@@ -45,8 +45,11 @@ const GoalList = (props) => {
 
   useEffect (() => {
     const loadGoalsFromServer = async () => {
+      console.log('loading goals');
       const response = await fetch('/getGoals');
+      console.log('parsing json');
       const data = await response.json();
+      console.log(`settings goals: ${data.goals}`)
       setGoals (data.goals);
     };
     loadGoalsFromServer();
