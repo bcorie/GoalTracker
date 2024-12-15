@@ -39,9 +39,11 @@ const GoalForm = (props) => {
     >
       <input id='goalTitle' type='text' class="header-font-regular" name='title' placeholder='Title' required/>
       <textarea id='goalDescription' type='text' class="text-font" name='description' placeholder='Description'/>
-      <label htmlFor='endDate' class="text-font">Complete by: </label>
-      <input id='goalEndDate' type='date' min={Date.now()} name='endDate' required/>
-      <input className='makeGoalSubmit' type='submit' value='Make Goal' />
+      <div id="dateFormSection">
+        <label htmlFor='endDate' class="text-font">Complete by: </label>
+        <input id='goalEndDate' type='date' min={Date.now()} name='endDate' required/>
+      </div>
+      <input id='makeGoalSubmit' type='submit' class="text-font" value='Make Goal' />
     </form>
   );
 };

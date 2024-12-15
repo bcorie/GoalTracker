@@ -95,13 +95,14 @@ nav:nth-child(1) {
 }
 
 /* Creation form */
-.goalForm {
+#makeGoal {
     display: flex;
     text-align: center;
     position: relative;
     flex-direction: column;
-    height: 300px;
-    width: 300px;
+    height: fit-content;
+    width: 50vw;
+    min-width: 355px;
     top: 100px;
     bottom: 0;
     left: 0;
@@ -113,37 +114,69 @@ nav:nth-child(1) {
     border-radius: 10px;
 }
 
+#makeGoal * {
+    min-width: fit-content;
+    flex: 1 0 auto;
+}
+
+#dateFormSection {
+    display: flex;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    justify-content: space-between;
+    width: 40vw;
+}
+
 .goalForm label {
-    /* display: inline-block; */
-    width: 75px;
-    /* margin-left: 10px; */
     font-size: 1.2em;
-    /* float: left; */
     color: #ededed;
 }
 
-.goalForm input[type=text], .goalForm input[type=date], .goalForm input[type=textform] {
+.goalForm input[type=text], .goalForm input[type=date] {
+    min-width: 276px;
+    width: 40vw;
     font-size: 1.5em;
     margin-bottom: 25px;
 }
+#goalEndDate {
+    width: 20vw;
+    
+}
+.goalForm textarea {
+    font-size: 1.2em;
+    margin-bottom: 25px;
+    width: 40vw;
+    resize: vertical;
+}
 
-.makeGoalSubmit {
+#makeGoalSubmit {
     transition: background-color 0.4s ease;
     display: inline;
-    width: 90px;
-    background-color: #55acee;
+    width: 20vw;
+    background-color: #ededed;
     border-radius: 2px;
-    color: #ededed;
+    color: #7360d4;
     text-decoration: none;
+    padding: 5px;
+    padding-left: 20px;
+    font-size: 1.3em;
 }
 
-.makeGoalSubmit:link, .makeGoalSubmit:visited, .makeGoalSubmit:hover, .makeGoalSubmit:active {
-    color: #ededed;
-}
-
-.makeGoalSubmit:hover {
+#makeGoalSubmit, #makeGoalSubmit:link, #makeGoalSubmit:visited, #makeGoalSubmit:hover, .navlink a:active {
+    color: #7360d4;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #ededed;
     transition: background-color 0.4s ease;
-    background-color: #338acc;
+}
+#makeGoalSubmit:hover {
+    transition: background-color 0.8s ease;
+    background-color: #b3b3b3;
 }
 
 /* Login form */
