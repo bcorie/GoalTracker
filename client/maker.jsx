@@ -43,7 +43,7 @@ const GoalForm = (props) => {
         <label htmlFor='endDate' class="text-font">Complete by: </label>
         <input id='goalEndDate' type='date' min={Date.now()} name='endDate' required/>
       </div>
-      <input id='makeGoalSubmit' type='submit' class="text-font" value='Make Goal' />
+      <input id='makeGoalSubmit' type='submit' class="text-font" value='Create' />
     </form>
   );
 };
@@ -72,9 +72,9 @@ const GoalList = (props) => {
     const convertedDate = new Date(goal.endDate);
     return (
       <div key={goal.id} className="goal">
-        <h3 className="goalTitle header-font-regular">{goal.title}</h3>
+        <h3 className="goalTitle header-font-regular"><strong>{goal.title}</strong></h3>
         <h3 className="goalDescription text-font">{goal.description}</h3>
-        <h3 className="goalEndDate text-font">Complete by {convertedDate.toLocaleDateString()}</h3>
+        <h3 className="goalEndDate text-font">Complete by <strong>{convertedDate.toLocaleDateString()}</strong></h3>
       </div>
     );
   });
@@ -96,6 +96,7 @@ const App = () => {
       </div>
       <div id="goals">
         <h2 class="header-font-italic">Upcoming Goals</h2>
+        <hr />
         <GoalList goals={[]} reloadGoals={reloadGoals} />
       </div>
     </div>

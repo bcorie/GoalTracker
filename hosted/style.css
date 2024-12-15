@@ -113,7 +113,6 @@ nav:nth-child(1) {
     border: 2px solid #ededed;
     border-radius: 10px;
 }
-
 #makeGoal * {
     min-width: fit-content;
     flex: 1 0 auto;
@@ -135,7 +134,6 @@ nav:nth-child(1) {
     font-size: 1.2em;
     color: #ededed;
 }
-
 .goalForm input[type=text], .goalForm input[type=date] {
     min-width: 276px;
     width: 40vw;
@@ -165,7 +163,6 @@ nav:nth-child(1) {
     padding-left: 20px;
     font-size: 1.3em;
 }
-
 #makeGoalSubmit, #makeGoalSubmit:link, #makeGoalSubmit:visited, #makeGoalSubmit:hover, .navlink a:active {
     color: #7360d4;
     text-decoration: none;
@@ -278,61 +275,44 @@ nav:nth-child(1) {
     font-style: italic;
 }
 
-
-#goal {
-    z-index: 225;
-    margin-top: -20px;
-    margin-left: 135px;
-    height: 450px;
-    width: 300px;
-    -ms-transform: rotate(330deg);
-    -webkit-transform: rotate(330deg); 
-    transform: rotate(330deg);
-}
-
+/* Goal list (populated) */
 #goals {
-    width: 40%;
-    min-width: 400px;
-    border: 2px solid #55acee;
-    border-radius: 4px;
+    width: 60vw;
+    min-width: fit-content;
+    /* border: 2px solid #55acee; */
+    /* border-radius: 4px; */
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 200px;
 }
-
+#goals > h2 {
+    text-align: center;
+}
+.goalListViewer {
+    display: flex;
+    flex-direction: column;
+}
 .goal {
-    margin: 0 auto;
     margin-top: 2px;
     margin-bottom: 2px;
-    border: 2px solid #55acee;
-    border-radius: 4px;
-    background-color: #55acee;
+    background-color: #f2f0ff;
+    border: 4px solid #7360d4;
+    border-radius: 10px;
+    color: #352d39;
     padding: 10px;
     min-height:60px;
     overflow: hidden;
 }
-
-.goal:hover {
+/* .goal:hover {
     transition: border-color 0.2s ease-out;
     border-color: rgba(255,255,255, 0.8);
     transition: background-color 2.6s ease-out;
     background-color: #66bfff;
-}
+} */
+ .goalTitle {
+    font-size: 1.5em;
+ }
 
-.goal > img {
-    min-width: 100px;
-    min-height: 100px;
-}
-
-img.goalFace {
-    margin-left: 25px;
-    margin-right: 10px;
-    height: 50px;
-    width: 50px;
-    border-radius: 4px;
-    margin-top:10px;
-    float:left;
-}
-
+/* Empty goals */
 h3.emptyGoal {
     width: 400px;
     font-size: 1.5em;
@@ -367,16 +347,6 @@ h3.goalHeight {
     font-size: 1.5em;
 }
 
-.goal:first-child {
-    margin-top: 10px;
-}
-
 .goal:last-child {
     margin-bottom:10px;
-}
-
-.goalListViewer {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
 }
