@@ -11,8 +11,16 @@ const handleGoal = (e, onGoalAdded) => {
   const description = e.target.querySelector('#goalDescription').value;
   const endDate = e.target.querySelector('#goalEndDate').value;
 
-  if (!title || !description || !endDate) {
+  // check for required fields
+  if (!title || !endDate) {
     helper.handleError('All fields are required!');
+    return false;
+  }
+
+  // check for date
+  const enteredDate = new Date(endDate);
+  if (enteredDate <= Date.now()) {
+    helper.handleError('Pick a future date!');
     return false;
   }
 
@@ -29,12 +37,10 @@ const GoalForm = (props) => {
       method='POST'
       className='goalForm'
     >
-      <label htmlFor='title'>Title: </label>
-      <input id='goalTitle' type='text' name='title' placeholder='Goal title' />
-      <label htmlFor='description'>Description: </label>
-      <input id='goalDescription' type='text' name='description' placeholder='Description'/>
-      <label htmlFor='endDate'>End Date: </label>
-      <input id='goalEndDate' type='date' min={Date.now()} name='endDate' />
+      <input id='goalTitle' type='text' class="header-font-regular" name='title' placeholder='Title' required/>
+      <textarea id='goalDescription' type='text' class="text-font" name='description' placeholder='Description'/>
+      <label htmlFor='endDate' class="text-font">Complete by: </label>
+      <input id='goalEndDate' type='date' min={Date.now()} name='endDate' required/>
       <input className='makeGoalSubmit' type='submit' value='Make Goal' />
     </form>
   );
@@ -45,17 +51,13 @@ const GoalList = (props) => {
 
   useEffect (() => {
     const loadGoalsFromServer = async () => {
-      console.log('loading goals');
       const response = await fetch('/getGoals');
-      console.log('parsing json');
       const data = await response.json();
-      console.log(`settings goals: ${data.goals}`)
       setGoals (data.goals);
     };
     loadGoalsFromServer();
   }, [props.reloadGoals]);
 
-  // console.log(goals);
   if (!goals || goals.length === 0) {
     return (
       <div className="goalList">
@@ -65,12 +67,12 @@ const GoalList = (props) => {
   }
 
   const goalNodes = goals.map(goal => {
+    const convertedDate = new Date(goal.endDate);
     return (
       <div key={goal.id} className="goal">
-        <img src="/assets/img/domoface.jpeg" alt="domo face" className="domoFace" />
-        <h3 className="goalTitle">Title: {goal.title}</h3>
-        <h3 className="goalDescription">Description: {goal.description}</h3>
-        <h3 className="goalEndDate">End Date: {goal.endDate}</h3>
+        <h3 className="goalTitle header-font-regular">{goal.title}</h3>
+        <h3 className="goalDescription text-font">{goal.description}</h3>
+        <h3 className="goalEndDate text-font">Complete by {convertedDate.toLocaleDateString()}</h3>
       </div>
     );
   });
@@ -87,9 +89,11 @@ const App = () => {
   return (
     <div>
       <div id="makeGoal">
+        <h2 class="header-font-italic">Create a goal!</h2>
         <GoalForm triggerReload={() => setReloadGoals(!reloadGoals)} />
       </div>
       <div id="goals">
+        <h2 class="header-font-italic">Upcoming Goals</h2>
         <GoalList goals={[]} reloadGoals={reloadGoals} />
       </div>
     </div>

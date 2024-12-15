@@ -24,10 +24,9 @@ const makeGoal = async (req, res) => {
     return res.status(201).json({
       title: newGoal.title,
       description: newGoal.description,
-      endDate: newGoal.endDate,
+      endDate: newGoal.endDate.toLocaleDateString(),
     });
   } catch (err) {
-    console.log(err);
     if (err.code === 11000) {
       return res.status(400).json({ error: 'Goal already exists!' });
     }
@@ -39,10 +38,8 @@ const getGoals = async (req, res) => {
   try {
     const query = { owner: req.session.account._id };
     const docs = await Goal.find(query).select('title description endDate').lean().exec();
-    console.log(docs);
     return res.json({ goals: docs });
   } catch (err) {
-    console.log(err);
     return res.status(500).json({ error: 'Error retrieving goals!' });
   }
 };
