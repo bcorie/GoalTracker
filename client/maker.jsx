@@ -63,7 +63,7 @@ const GoalList = (props) => {
   if (!goals || goals.length === 0) {
     return (
       <div className="goalList">
-        <h3 className="emptyGoal">No Goals Yet!</h3>
+        <h3 className="emptyGoal header-font-regular">No Goals Yet!</h3>
       </div>
     );
   }
