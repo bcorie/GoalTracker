@@ -1,11 +1,24 @@
+// const React = require('react');
+
+// const ErrorModal = (message) => {
+
+//   return (
+//   <div id="errorModal">
+//     <span id="close" onclick={hideError}>&times;</span>
+//     <p id="errorMessage"></p>
+//     <p id="suggestion"></p>
+//  </div>
+//   )
+// }
+
 /* Takes in an error message. Sets the error message up in html, and
   displays it to the user. Will be hidden by other events that could
   end in an error.
 */
-const handleError = (message) => {
-  // TODO: update for new error message UI
+const openError = (message) => {
   document.querySelector('#errorMessage').textContent = message;
-  document.querySelector('#domoMessage').classList.remove('hidden');
+  document.querySelector('#errorModal').classList.remove('hidden');
+  // return <p id="errorMessage"></p>;
 };
 
 /* Sends post requests to the server using fetch. Will look for various
@@ -20,16 +33,15 @@ const sendPost = async (url, data, handler) => {
     body: JSON.stringify(data),
   });
 
-  // TODO: update for new error message UI
   const result = await response.json();
-  document.querySelector('#domoMessage').classList.add('hidden');
+  document.querySelector('#errorModal').classList.add('hidden');
 
   if (result.redirect) {
     window.location = result.redirect;
   }
 
   if (result.error) {
-    handleError(result.error);
+    openError(result.error);
   }
 
   if (handler) {
@@ -38,12 +50,13 @@ const sendPost = async (url, data, handler) => {
 };
 
 const hideError = () => {
-  // TODO: update for new error message UI
-  document.querySelector('#domoMessage').classList.add('hidden');
+  document.querySelector('#errorModal').classList.add('hidden');
 };
 
 module.exports = {
-  handleError,
+  openError,
   sendPost,
   hideError,
 };
+
+// export default ErrorModal;

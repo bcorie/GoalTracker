@@ -178,7 +178,7 @@ nav:nth-child(1) {
     background-color: #b3b3b3;
 }
 
-/* Login form */
+/* Log in/sign up form */
 .mainForm {
     text-align: center;
     position: absolute;
@@ -191,7 +191,7 @@ nav:nth-child(1) {
     right: 0;
     margin: auto;
     padding-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 75px;
     font-size: 1.2em;
     background-color: #7360d4;
     border: 2px solid #ededed;
@@ -233,6 +233,7 @@ nav:nth-child(1) {
     padding: 3px 0px;
     color: #7360d4;
     text-decoration: none;
+    cursor: pointer;
 }
 .formSubmit:link, .formSubmit:visited, .formSubmit:hover, .formSubmit:active {
     color: #352d39;
@@ -252,33 +253,33 @@ nav:nth-child(1) {
     box-shadow: 0px 0px 1px 1px #ffc857;
 }
 
-
 /* Error message */
-#goalMessage {
-    top: 250px;
-    width: 250px;
-    height: 650px;
-    position: absolute;
-    z-index: 200;
-    right: 0px;
-    overflow: hidden;
-}
-#goalMessage h3 {
-    width: 200px;
-    position: absolute;
-    top: 0px;
-    left: 20px;
-}
-#speech {
-    height: 120px;
-    width: 250px;
-    z-index:300;
+#errorModal {
+    z-index: 1;
+    background-color: #db4545;
+    border: 2px solid #7360d4;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin: auto;
+    margin-top: 20px;
+    height: 75px;
+
 }
 #errorMessage {
-    font-size: 1.2em;
+    padding: 5px;
     font-weight: bold;
-    color: red;
+    color: #ededed;
     font-style: italic;
+    /* height: ; */
+}
+#close {
+    font-weight: bold;
+    user-select: none;
+    cursor: pointer;
+    float: right;
+    padding-top: 10px;
+    padding-right: 10px;
+    color: #ededed
 }
 
 /* Goal list (populated) */
@@ -309,15 +310,18 @@ nav:nth-child(1) {
     min-height:60px;
     overflow: hidden;
 }
+.goal:last-child {
+    margin-bottom:10px;
+}
 /* .goal:hover {
     transition: border-color 0.2s ease-out;
     border-color: rgba(255,255,255, 0.8);
     transition: background-color 2.6s ease-out;
     background-color: #66bfff;
 } */
- .goalTitle {
+.goalTitle {
     font-size: 1.5em;
- }
+}
 
 /* Empty goals */
 h3.emptyGoal {
@@ -327,34 +331,4 @@ h3.emptyGoal {
     text-align: center;
     margin-top: 18px;
     color: #db4545;
-}
-
-h3.goalName {
-    float:left;
-    width: 200px;
-    font-weight: bold;
-    padding-left: 65px;
-    font-size: 1.5em;
-}
-
-h3.goalAge {
-    float:left;
-    text-align: left;
-    width: 100px;
-    font-weight: bold;
-    padding-right: 40px;
-    font-size: 1.5em;
-}
-
-h3.goalHeight {
-    float:left;
-    text-align: left;
-    width: 100px;
-    font-weight: bold;
-    padding-right: 40px;
-    font-size: 1.5em;
-}
-
-.goal:last-child {
-    margin-bottom:10px;
 }

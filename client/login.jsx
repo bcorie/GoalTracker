@@ -10,7 +10,7 @@ const handleLogin = (e) => {
   const pass = e.target.querySelector('#pass').value;
 
   if (!username || !pass) {
-    helper.handleError('Username or password is empty!');
+    helper.openError('Username or password is empty!');
     return false;
   }
 
@@ -27,12 +27,12 @@ const handleSignup = (e) => {
   const pass2 = e.target.querySelector('#pass2').value;
 
   if (!username || !pass || !pass2) {
-    helper.handleError('All fields are required!');
+    helper.openError('All fields are required!');
     return false;
   }
 
   if (pass !== pass2) {
-    helper.handleError('Passwords do not match!');
+    helper.openError('Passwords do not match!');
     return false;
   }
 
@@ -54,6 +54,11 @@ const LoginWindow = (props) => {
       <input id='user' type='text' class="text-font"name='username' placeholder='Username' />
       <input id='pass' type='password' class="text-font"name='pass' placeholder='Password' />
       <input class="formSubmit text-font" type='submit' value='Log in' />
+
+      <div id="errorModal" class="hidden">
+        <span id="close" onClick={() => helper.hideError()}>&times;</span>
+        <p id="errorMessage"></p>
+      </div>
     </form>
   )
 };
@@ -73,6 +78,11 @@ const SignupWindow = (props) => {
       <input id='pass' type='password' class="text-font" name='pass' placeholder='Password' />
       <input id='pass2' type='password' class="text-font" name='pass2' placeholder='Confirm password' />
       <input class="formSubmit text-font" type='submit' value='Sign in' />
+
+      <div id="errorModal" class="hidden">
+        <span id="close" onClick={() => helper.hideError()}>&times;</span>
+        <p id="errorMessage"></p>
+      </div>
     </form>
   )
 };

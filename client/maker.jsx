@@ -13,14 +13,14 @@ const handleGoal = (e, onGoalAdded) => {
 
   // check for required fields
   if (!title || !endDate) {
-    helper.handleError('All fields are required!');
+    helper.openError('All fields are required!');
     return false;
   }
 
   // check for date
   const enteredDate = new Date(endDate);
   if (enteredDate <= Date.now()) {
-    helper.handleError('Pick a future date!');
+    helper.openError('Pick a future date!');
     return false;
   }
 
@@ -44,6 +44,12 @@ const GoalForm = (props) => {
         <input id='goalEndDate' type='date' min={Date.now()} name='endDate'/>
       </div>
       <input id='makeGoalSubmit' type='submit' class="text-font" value='Create' />
+
+      <div id="errorModal" class="hidden">
+        <span id="close" onClick={() => helper.hideError()}>&times;</span>
+        <p id="errorMessage"></p>
+      </div>
+
     </form>
   );
 };
@@ -88,6 +94,7 @@ const GoalList = (props) => {
 
 const App = () => {
   const [reloadGoals, setReloadGoals] = useState (false);
+
   return (
     <div>
       <div id="makeGoal">
@@ -104,7 +111,7 @@ const App = () => {
 };
 
 const init = () => {
-  const root = createRoot (document.getElementById('app')); root.render(<App /> );
+  const root = createRoot (document.querySelector('#app')); root.render(<App /> );
 };
 
 window.onload = init;

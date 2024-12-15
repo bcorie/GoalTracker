@@ -19,7 +19,7 @@ const dbURI = process.env.MONGODB_URI || 'mongodb+srv://dbAdmin:cfb3749Password@
 
 mongoose.connect(dbURI).catch((err) => {
   if (err) {
-    console.log('Could not connect to database');
+    // console.log('Could not connect to database');
     throw err;
   }
 });
@@ -28,7 +28,7 @@ const redisClient = redis.createClient({
   url: process.env.REDISCLOUD_URL,
 });
 
-redisClient.on('error', (err) => console.log('Redis Client Error', err));
+// redisClient.on('error', (err) => console.log('Redis Client Error', err));
 
 redisClient.connect().then(() => {
   const app = express();
@@ -58,6 +58,5 @@ redisClient.connect().then(() => {
 
   app.listen(port, (err) => {
     if (err) { throw err; }
-    console.log(`Listening on port ${port}`);
   });
 });

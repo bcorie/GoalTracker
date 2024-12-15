@@ -29,9 +29,7 @@ module.exports = {
 };
 
 if (process.env.NODE_ENV === 'production') {
-  console.log('requiring secure');
   module.exports.requiresSecure = requiresSecure;
 } else {
-  console.log('bypassing secure');
   module.exports.requiresSecure = bypassSecure;
 }
