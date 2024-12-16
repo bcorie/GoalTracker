@@ -133,7 +133,7 @@ nav:nth-child(1) {
     font-size: 1.2em;
     color: #ededed;
 }
-.goalForm input[type=text], .goalForm input[type=date] {
+.goalForm input[type=text], .goalForm input[type=datetime-local] {
     min-width: 276px;
     width: 40vw;
     font-size: 1.5em;

@@ -19,7 +19,7 @@ const handleGoal = (e, onGoalAdded) => {
 
   // check for date
   const enteredDate = new Date(endDate);
-  if (enteredDate.getUTCMilliseconds() <= Date.now()) {
+  if (enteredDate.getTime() <= Date.now()) {
     helper.openError('Pick a future date!');
     return false;
   }
@@ -41,7 +41,7 @@ const GoalForm = (props) => {
       <textarea id='goalDescription' type='text' class="text-font" name='description' placeholder='Description'/>
       <div id="dateFormSection">
         <label htmlFor='endDate' class="text-font">Complete by: </label>
-        <input id='goalEndDate' type='date' min={Date.now()} name='endDate'/>
+        <input id='goalEndDate' type='datetime-local' min={Date.now()} name='endDate'/>
       </div>
       <input id='makeGoalSubmit' type='submit' class="text-font" value='Create' />
 
@@ -80,7 +80,7 @@ const GoalList = (props) => {
       <div key={goal.id} className="goal">
         <h3 className="goalTitle header-font-regular"><strong>{goal.title}</strong></h3>
         <h3 className="goalDescription text-font">{goal.description}</h3>
-        <h3 className="goalEndDate text-font">Complete by <strong>{convertedDate.toLocaleDateString()}</strong></h3>
+        <h3 className="goalEndDate text-font">Complete by <strong>{convertedDate.toLocaleDateString()} @ {convertedDate.toLocaleTimeString()}</strong></h3>
       </div>
     );
   });
