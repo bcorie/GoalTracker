@@ -3,6 +3,7 @@ const {createRoot} = require('react-dom/client');
 const helper = require('./helper');
 const { useState, useEffect } = React;
 
+// try to create and add a goal to the database
 const handleGoal = (e, onGoalAdded) => {
   e.preventDefault();
   helper.hideError();
@@ -24,10 +25,12 @@ const handleGoal = (e, onGoalAdded) => {
     return false;
   }
 
+  // add/create goal
   helper.sendPost(e.target.action, { title, description, endDate }, onGoalAdded);
   return false;
 };
 
+// React component for making a goal
 const GoalForm = (props) => {
   return (
     <form id='goalForm'
@@ -54,6 +57,7 @@ const GoalForm = (props) => {
   );
 };
 
+// React component for viewing goals made
 const GoalList = (props) => {
   const [goals, setGoals] = useState(props.goals);
 
