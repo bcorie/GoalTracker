@@ -5,8 +5,8 @@ const { Goal } = models;
 const makerPage = async (req, res) => res.render('app');
 
 const makeGoal = async (req, res) => {
-  if (!req.body.title || !req.body.description || !req.body.endDate) {
-    return res.status(400).json({ error: 'All fields are required!' });
+  if (!req.body.title || !req.body.endDate) {
+    return res.status(400).json({ error: 'Need a title and date!' });
   }
 
   const GoalData = {
@@ -15,8 +15,6 @@ const makeGoal = async (req, res) => {
     endDate: req.body.endDate,
     owner: req.session.account._id,
   };
-
-  // console.log(`${req.body.name}, ${description}, ${endDate}`);
 
   try {
     const newGoal = new Goal(GoalData);
@@ -44,21 +42,8 @@ const getGoals = async (req, res) => {
   }
 };
 
-// const viewPage = async (req, res) => {
-//   try {
-//     const query = { owner: req.session.account._id };
-//     const docs = await Goal.find(query).select('title height').lean().exec();
-
-//     return res.json({ Goals: docs });
-//   } catch (err) {
-//     console.log(err);
-//     return res.status(500).json({ error: 'Error retrieving goals!' });
-//   }
-// };
-
 module.exports = {
   makerPage,
   makeGoal,
   getGoals,
-  // viewPage,
 };

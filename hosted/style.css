@@ -10,10 +10,6 @@ red: #db4545
 
 
 /* Fonts */
-/* Imported font classes */
-/* <uniquifier>: Use a unique and descriptive class name
-   <weight>: Use a value from 200 to 1000 */
-
 .text-font {
   font-family: "Nunito Sans", sans-serif;
   font-optical-sizing: auto;
@@ -336,4 +332,25 @@ h3.emptyGoal {
     text-align: center;
     margin-top: 18px;
     color: #db4545;
+}
+
+/* 404 announcement */
+#not-found-content {
+    text-align: center;
+}
+#not-found-content h1 {
+    font-size: 4em;
+}
+#not-found-content p, #not-found-content a {
+    font-size: 2em;
+    color: #b3b3b3
+}
+#not-found-content a:link, #not-found-content a:visited, #not-found-content a:hover, #not-found-content a:active {
+    font-size: 2em;
+    color: #ededed;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #7360d4;
+    transition: background-color 0.4s ease;
 }

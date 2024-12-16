@@ -14,7 +14,7 @@ const handleGoal = (e, onGoalAdded) => {
 
   // check for required fields
   if (!title || !endDate) {
-    helper.openError('All fields are required!');
+    helper.openError('Need a title and date!');
     return false;
   }
 
@@ -115,7 +115,8 @@ const App = () => {
 };
 
 const init = () => {
-  const root = createRoot (document.querySelector('#app')); root.render(<App /> );
+  const root = createRoot (document.querySelector('#app'));
+  root.render(<App /> );
 };
 
 window.onload = init;

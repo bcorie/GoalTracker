@@ -2,13 +2,13 @@ const React = require('react');
 const {createRoot} = require('react-dom/client');
 
 // React component for page content
-const NotFoundContent = () => {
+const NotFoundContent = (props) => {
   return (
-    <div id="not-found">
+    <div>
       <h1 class="display-font">404: Page Not Found</h1>
-      <p>The page you're looking for does not exist.</p>
-      <a href="/" id="home-link">Back to Home</a>
-    </div>
+      <p class="text-font">The page you're looking for does not exist.</p>
+      <a href="/" id="home-link" class="text-font">Back to Home</a>
+      </div>
   );
 };
 

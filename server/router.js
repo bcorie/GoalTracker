@@ -1,6 +1,11 @@
 const controllers = require('./controllers');
 const mid = require('./middleware');
 
+// create 404 page
+const notFound = (req, res) => {
+  res.render('404');
+};
+
 const router = (app) => {
   app.get('/getGoals', mid.requiresLogin, controllers.Goal.getGoals);
 
@@ -17,6 +22,9 @@ const router = (app) => {
   // app.get('/viewer', mid.requiresLogin, controllers.Goal.viewPage);
 
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
+
+  // default to 404 page, no middleware needed
+  app.get('*', notFound);
 };
 
 module.exports = router;
