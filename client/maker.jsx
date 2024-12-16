@@ -19,7 +19,7 @@ const handleGoal = (e, onGoalAdded) => {
 
   // check for date
   const enteredDate = new Date(endDate);
-  if (enteredDate <= Date.now()) {
+  if (enteredDate.getUTCMilliseconds() <= Date.now()) {
     helper.openError('Pick a future date!');
     return false;
   }
@@ -47,7 +47,7 @@ const GoalForm = (props) => {
 
       <div id="errorModal" class="hidden">
         <span id="close" onClick={() => helper.hideError()}>&times;</span>
-        <p id="errorMessage"></p>
+        <p id="errorMessage" class="header-font-italic"></p>
       </div>
 
     </form>

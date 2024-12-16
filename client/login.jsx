@@ -57,7 +57,7 @@ const LoginWindow = (props) => {
 
       <div id="errorModal" class="hidden">
         <span id="close" onClick={() => helper.hideError()}>&times;</span>
-        <p id="errorMessage"></p>
+        <p id="errorMessage" class="header-font-italic"></p>
       </div>
     </form>
   )
@@ -77,11 +77,11 @@ const SignupWindow = (props) => {
       <input id='user' type='text' class="text-font" name='username' placeholder='Username' />
       <input id='pass' type='password' class="text-font" name='pass' placeholder='Password' />
       <input id='pass2' type='password' class="text-font" name='pass2' placeholder='Confirm password' />
-      <input class="formSubmit text-font" type='submit' value='Sign in' />
+      <input class="formSubmit text-font" type='submit' value='Sign up' />
 
       <div id="errorModal" class="hidden">
         <span id="close" onClick={() => helper.hideError()}>&times;</span>
-        <p id="errorMessage"></p>
+        <p id="errorMessage" class="header-font-italic"></p>
       </div>
     </form>
   )
