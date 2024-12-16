@@ -96,6 +96,7 @@ const GoalList = (props) => {
   );
 };
 
+// Complete React component to render
 const App = () => {
   const [reloadGoals, setReloadGoals] = useState (false);
 

@@ -6,6 +6,7 @@ const notFound = (req, res) => {
   res.render('404');
 };
 
+// create routes from controllers
 const router = (app) => {
   app.get('/getGoals', mid.requiresLogin, controllers.Goal.getGoals);
 

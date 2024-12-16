@@ -1,3 +1,4 @@
+// imports
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
@@ -13,13 +14,13 @@ const redis = require('redis');
 
 const router = require('./router');
 
+// get variables
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
-
 const dbURI = process.env.MONGODB_URI || 'mongodb+srv://dbAdmin:cfb3749Password@richmedia.1a1ll.mongodb.net/GoalTracker?retryWrites=true&w=majority';
 
+// connect to clouds
 mongoose.connect(dbURI).catch((err) => {
   if (err) {
-    // console.log('Could not connect to database');
     throw err;
   }
 });
@@ -27,8 +28,6 @@ mongoose.connect(dbURI).catch((err) => {
 const redisClient = redis.createClient({
   url: process.env.REDISCLOUD_URL,
 });
-
-// redisClient.on('error', (err) => console.log('Redis Client Error', err));
 
 redisClient.connect().then(() => {
   const app = express();
@@ -55,11 +54,6 @@ redisClient.connect().then(() => {
   app.set('views', `${__dirname}/../views`);
 
   router(app);
-
-  // 404 page
-  app.use((req, res) => {
-    res.status(404).render('404');
-  });
 
   app.listen(port, (err) => {
     if (err) { throw err; }
