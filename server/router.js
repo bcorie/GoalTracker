@@ -20,8 +20,6 @@ const router = (app) => {
   app.get('/maker', mid.requiresLogin, controllers.Goal.makerPage);
   app.post('/maker', mid.requiresLogin, controllers.Goal.makeGoal);
 
-  // app.get('/viewer', mid.requiresLogin, controllers.Goal.viewPage);
-
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 
   // default to 404 page, no middleware needed
